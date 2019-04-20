@@ -22,7 +22,15 @@ export default class App extends React.Component {
   };
   render() {
     const listOutPut = this.state.listItem.map((place, i) => {
-      return <ListItem key={i} placeName={place} />;
+      return (
+        <ListItem
+          key={i}
+          onItemPressed={() => {
+            alert(place);
+          }}
+          placeName={place}
+        />
+      );
     });
     return (
       <View style={styles.container}>
