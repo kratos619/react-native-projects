@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import ListItem from './src/ListItem/ListItem';
 
 export default class App extends React.Component {
   state = {
@@ -21,17 +22,12 @@ export default class App extends React.Component {
   };
   render() {
     const listOutPut = this.state.listItem.map((place, i) => {
-      return (
-        <Text key={i}>
-          {i}
-          {place}
-        </Text>
-      );
+      return <ListItem key={i} placeName={place} />;
     });
     return (
       <View style={styles.container}>
         <Text>{this.state.placeName}</Text>
-        <Text>{listOutPut}</Text>
+        {listOutPut}
         <View style={styles.inputContainer}>
           <TextInput
             placeholder="enter Your Name"
