@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default class App extends React.Component {
   state = {
-    placeName: ''
+    placeName: '',
+    listItem: []
   };
 
   placeNameChangeHandler = val => {
@@ -11,15 +12,38 @@ export default class App extends React.Component {
       placeName: val
     });
   };
+
+  addToList = () => {
+    this.state.listItem.push(this.state.placeName);
+    this.setState({
+      placeName: ''
+    });
+  };
   render() {
+    const listOutPut = this.state.listItem.map((place, i) => {
+      return (
+        <Text key={i}>
+          {i}
+          {place}
+        </Text>
+      );
+    });
     return (
       <View style={styles.container}>
-        <Text>Gaurav Milind Palaspagar new</Text>
-        <TextInput
-          style={{ width: 300, borderColor: 'black', borderWidth: 1 }}
-          onChangeText={this.placeNameChangeHandler}
-          value={this.state.placeName}
-        />
+        <Text>{this.state.placeName}</Text>
+        <Text>{listOutPut}</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="enter Your Name"
+            onChangeText={this.placeNameChangeHandler}
+            value={this.state.placeName}
+          />
+          <Button
+            style={styles.placeButton}
+            onPress={this.addToList}
+            title="add"
+          />
+        </View>
       </View>
     );
   }
@@ -27,9 +51,22 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    padding: 40,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  inputContainer: {
+    //flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  placeinput: {
+    width: '70%'
+  },
+  placeButton: {
+    width: '30%'
   }
 });
