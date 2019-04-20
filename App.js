@@ -1,5 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  ScrollView
+} from 'react-native';
 import ListItem from './src/ListItem/ListItem';
 
 export default class App extends React.Component {
@@ -14,6 +21,10 @@ export default class App extends React.Component {
     });
   };
 
+  deleteItem = (place, i) => {
+    alert(place + ' ' + i);
+    this.setState(this.state.listItem.splice(i, 1));
+  };
   addToList = () => {
     this.state.listItem.push(this.state.placeName);
     this.setState({
@@ -26,7 +37,8 @@ export default class App extends React.Component {
         <ListItem
           key={i}
           onItemPressed={() => {
-            alert(place);
+            // alert(place);
+            this.deleteItem(place, i);
           }}
           placeName={place}
         />
@@ -35,7 +47,6 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>{this.state.placeName}</Text>
-        {listOutPut}
         <View style={styles.inputContainer}>
           <TextInput
             placeholder="enter Your Name"
@@ -48,6 +59,7 @@ export default class App extends React.Component {
             title="add"
           />
         </View>
+        <ScrollView>{listOutPut}</ScrollView>
       </View>
     );
   }
