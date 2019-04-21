@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 export default function ListItem(props) {
   return (
@@ -16,6 +16,8 @@ const style = StyleSheet.create({
     width: '100%',
     padding: 10,
     backgroundColor: 'red',
-    marginBottom: 5
+    marginBottom: 5,
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 });
