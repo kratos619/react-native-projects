@@ -15,7 +15,7 @@ const style = StyleSheet.create({
   listItem: {
     width: '100%',
     padding: 10,
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
     marginBottom: 5,
     flexDirection: 'row',
     alignItems: 'center'

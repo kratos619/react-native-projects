@@ -32,7 +32,6 @@ export default class App extends React.Component {
     this.setState({
       placeName: ''
     });
-    console.log(this.state.imageName);
   };
   render() {
     const listOutPut = this.state.listItem.map((place, i) => {
